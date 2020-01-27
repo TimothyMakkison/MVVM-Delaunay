@@ -24,10 +24,5 @@ namespace Triangle_Inscriber.MainPage
         {
             InitializeComponent();
         }
-
-        private void Canvas_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
-        }
     }
 }

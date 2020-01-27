@@ -6,74 +6,26 @@ namespace Triangle_Inscriber.MainPage
 {
     class MainPageViewModel : ObservableObject, IPageViewModel
     {
-        public string Name => "Main Page";
-
-        #region Properties
-
-        #region CircleProperties
-        private double circleDiameter = 100;
-        private FloatingPoint circleCenter = new FloatingPoint(-50, 0);
-
-        public FloatingPoint CircleCenter
+        #region Constructor
+        public MainPageViewModel()
         {
-            get => circleCenter;
-            set
-            {
-                circleCenter = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public double CircleDiameter
-        {
-            get => circleDiameter;
-            set
-            {
-                circleDiameter = value;
-                OnPropertyChanged();
-            }
+            var encompassingCircle = TriangleInscriber.Inscribe(Red.Position, Green.Position, Blue.Position);
+            Circle = encompassingCircle;
         }
         #endregion
 
+        #region Properties
+        public string Name => "Main Page";
+
+        #region CircleProperties
+        public Circle Circle { get; set; }
+        #endregion
+
         #region Vertices
-        private FloatingPoint red = new FloatingPoint(100, 300);
-        private FloatingPoint green = new FloatingPoint(300, 100);
-        private FloatingPoint blue = new FloatingPoint(200, 400);
 
-        public MainPageViewModel()
-        {
-            var encompassingCircle = TriangleInscriber.Inscribe(Red, Green, Blue);
-            circleCenter = encompassingCircle.CirclePosition;
-            circleDiameter = encompassingCircle.Diameter;
-        }
-
-        public FloatingPoint Red
-        {
-            get => red;
-            set
-            {
-                red = value;
-                OnPropertyChanged();
-            }
-        }
-        public FloatingPoint Green
-        {
-            get => green;
-            set
-            {
-                green = value;
-                OnPropertyChanged();
-            }
-        }
-        public FloatingPoint Blue
-        {
-            get => blue;
-            set
-            {
-                blue = value;
-                OnPropertyChanged();
-            }
-        }
+        public Circle Red { get; set; } = new Circle(100, 300,10);
+        public Circle Green { get; set; } = new Circle(300, 100,10);
+        public Circle Blue { get; set; } = new Circle(200, 400,10);
         #endregion
 
         #endregion

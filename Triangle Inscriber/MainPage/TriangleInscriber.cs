@@ -69,17 +69,4 @@ namespace Triangle_Inscriber.MainPage
             return new Circle(new FloatingPoint(cx - radius, cy - radius), 2*radius);
         }
     }
-    public struct Circle
-    {
-        public FloatingPoint CirclePosition;
-        public double Diameter;
-
-        public Circle(FloatingPoint circlePosition, double diameter)
-        {
-            CirclePosition = circlePosition;
-            Diameter = diameter;
-        }
-
-        public override string ToString() => $"{CirclePosition}, {Diameter}";
-    }
 }

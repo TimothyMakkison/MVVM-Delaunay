@@ -78,6 +78,7 @@
     <Compile Include="Helpers\Helper Classes\IPageViewModel.cs" />
     <Compile Include="Helpers\Helper Classes\ObservableObject.cs" />
     <Compile Include="Helpers\Helper Classes\RelayCommand.cs" />
+    <Compile Include="MainPage\Circle.cs" />
     <Compile Include="MainPage\FloatingPoint.cs" />
     <Compile Include="MainPage\TriangleInscriber.cs" />
     <Compile Include="MainPage\MainPageView.xaml.cs">

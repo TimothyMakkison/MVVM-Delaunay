@@ -30,4 +30,6 @@ public class FloatingPoint : ObservableObject
     }
 
     public override string ToString() => $"{{{X}, {Y}}}";
+
+    public static FloatingPoint operator -(FloatingPoint point, double value) => new FloatingPoint(point.X - value, point.Y - value);
 }

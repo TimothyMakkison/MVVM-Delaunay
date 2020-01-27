@@ -21,16 +21,18 @@
                 <ColumnDefinition Width="160"/>
             </Grid.ColumnDefinitions>
             <Canvas Background="AliceBlue" ClipToBounds="True">
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Red.X}" Canvas.Bottom="{Binding Red.Y}" Fill="Red"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Green.X}" Canvas.Bottom="{Binding Green.Y}" Fill="Green"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Blue.X}" Canvas.Bottom="{Binding Blue.Y}" Fill="Blue"/>
-
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding CircleCenter.X}" Canvas.Bottom="{Binding CircleCenter.Y}"
-                         Fill="Brown"/>
-
-                <Ellipse Height="{Binding CircleDiameter}" Width="{Binding CircleDiameter}" 
-                         Canvas.Left="{Binding CircleCenter.X}" Canvas.Bottom="{Binding CircleCenter.Y}"
+                <Ellipse Height="{Binding Circle.Diameter}"  Width="{Binding Circle.Diameter}" 
+                         Canvas.Left="{Binding Circle.Position.X}" Canvas.Bottom="{Binding Circle.Position.Y}"
                          StrokeThickness="1" Stroke="Black"/>
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Bottom="{Binding Red.CanvasPosition.Y}" 
+                         Fill="Red"/>
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Bottom="{Binding Green.CanvasPosition.Y}" 
+                         Fill="Green"/>
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Bottom="{Binding Blue.CanvasPosition.Y}"
+                         Fill="Blue"/>
+
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding CircleCenter.CanvasPosition.X}" Canvas.Bottom="{Binding CircleCenter.CanvasPosition.Y}"
+                         Fill="Brown"/>
             </Canvas>
 
             <!--<StackPanel Grid.Column="1" Background="DimGray">
