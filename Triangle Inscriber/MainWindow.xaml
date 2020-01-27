@@ -1,0 +1,48 @@
+﻿<Window x:Class="Triangle_Inscriber.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:local="clr-namespace:Triangle_Inscriber"
+        xmlns:ViewModel="clr-namespace:Triangle_Inscriber.MainWindowViewModel"
+        xmlns:MainPage="clr-namespace:Triangle_Inscriber.MainPage"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen" Background="LightGray"
+        WindowStyle="None" AllowsTransparency="True">
+    
+    <Window.DataContext>
+        <ViewModel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type MainPage:MainPageViewModel}">
+            <MainPage:MainPageView/>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Rectangle Fill="Gray" Height="40" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseDown="DragWindow_MouseDown"/>
+
+        <ContentControl Content="{Binding CurrentPageViewModel}"/>
+        
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    Height="40" Margin="7,0,0,0">
+            <!--Minimise-->
+            <Button Click="MinimizeWindowButton_Click">
+                <materialDesign:PackIcon Kind="Remove" />
+            </Button>
+            <!--Toggle Window State-->
+            <Button Click="ChangeWindowState_Click">
+                <materialDesign:PackIcon Kind="CropSquare"/>
+            </Button>
+            <!--Close Window-->
+            <Button Click="CloseWindow_Click" Height="Auto">
+                <materialDesign:PackIcon Kind="Close"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
