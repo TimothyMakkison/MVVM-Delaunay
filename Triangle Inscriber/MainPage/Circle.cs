@@ -42,6 +42,12 @@ namespace Triangle_Inscriber.MainPage
                 }
                 return canvasPosition;
             }
+            set
+            {
+                canvasPosition = value;
+                Position = canvasPosition + Diameter / 2;
+                OnPropertyChanged();
+            }
         }
 
         public double Diameter

@@ -32,4 +32,8 @@ public class FloatingPoint : ObservableObject
     public override string ToString() => $"{{{X}, {Y}}}";
 
     public static FloatingPoint operator -(FloatingPoint point, double value) => new FloatingPoint(point.X - value, point.Y - value);
+
+    public static FloatingPoint operator +(FloatingPoint point, double value) => new FloatingPoint(point.X + value, point.Y + value);
+
+    public static implicit operator FloatingPoint(System.Windows.Point point) => new FloatingPoint(point.X, point.Y);
 }
