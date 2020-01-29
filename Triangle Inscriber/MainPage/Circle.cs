@@ -1,4 +1,5 @@
 ﻿using Triangle_Inscriber.Helpers.Helper_Classes;
+using System.Windows;
 
 namespace Triangle_Inscriber.MainPage
 {
@@ -6,8 +7,6 @@ namespace Triangle_Inscriber.MainPage
     {
         #region Fields
         private double diameter;
-        private bool viewChange = true;
-        private FloatingPoint canvasPosition;
         private FloatingPoint position;
         #endregion
 
@@ -23,39 +22,23 @@ namespace Triangle_Inscriber.MainPage
         #region Properties
         public FloatingPoint Position
         {
-            get => position; set
+            get => position; 
+            set
             {
-                viewChange = true;
                 position = value;
+                OnPropertyChanged();
+                OnPropertyChanged("CanvasPosition");
+
             }
         }
 
-        public FloatingPoint CanvasPosition
-        {
-            get
-            {
-                if (viewChange)
-                {
-                    canvasPosition = Position - Diameter / 2;
-                    viewChange = false;
-                    OnPropertyChanged();
-                }
-                return canvasPosition;
-            }
-            set
-            {
-                canvasPosition = value;
-                Position = canvasPosition + Diameter / 2;
-                OnPropertyChanged();
-            }
-        }
+        public FloatingPoint CanvasPosition => Position - Diameter / 2;
 
         public double Diameter
         {
             get => diameter;
             set
             {
-                viewChange = true;
                 diameter = value;
                 OnPropertyChanged();
             }

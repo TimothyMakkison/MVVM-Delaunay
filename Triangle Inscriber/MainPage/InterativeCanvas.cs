@@ -9,14 +9,12 @@ namespace Triangle_Inscriber.MainPage
 {
     public class InterativeCanvas : Canvas
     {
-        public InteractiveCanvasModel Model {get;set;}
-
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
             base.OnMouseUp(e);
             var mousePos = e.GetPosition(this);
-            MessageBox.Show(mousePos.ToString());
-            //Model.OnUserClick(mousePos);
+            MessageBox.Show("Cursor position is " + mousePos.ToString());
+            InteractiveCanvasModel.OnUserClick(mousePos);
         }
     }
 }

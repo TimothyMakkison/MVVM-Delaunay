@@ -16,7 +16,7 @@ namespace Triangle_Inscriber.MainPage
         /// <param name="b">Second point.</param>
         /// <param name="c">Third point.</param>
         /// <returns>Position and diameter of circle.</returns>
-        public static Circle Inscribe(FloatingPoint a, FloatingPoint b, FloatingPoint c)
+        public static Circle Inscribe(this Circle circle, FloatingPoint a, FloatingPoint b, FloatingPoint c)
         {
             //Calculate deltas
             double dx1 = a.X - b.X;
@@ -37,7 +37,7 @@ namespace Triangle_Inscriber.MainPage
             //Find the normal gradient at the median
             double g1 = -dx1 / dy1;
             double g2 = -dx2 / dy2;
-
+            
             double determinant = -g1 + g2;
             double n = (-g2 * dmx1 + dmy1) / determinant;
 
@@ -66,7 +66,11 @@ namespace Triangle_Inscriber.MainPage
             double ry = a.Y - cy;
             double radius = Math.Sqrt(rx * rx + ry * ry);
 
-            return new Circle(new FloatingPoint(cx - radius, cy - radius), 2*radius);
+            var cPoint = new FloatingPoint(cx, cy );
+            circle.Diameter = 2 * radius;
+            circle.Position  = cPoint;
+
+            return new Circle(cPoint, 2*radius);
         }
     }
 }

@@ -19,16 +19,16 @@
         <Grid Grid.Row="1">
             <local:InterativeCanvas Background="AliceBlue" ClipToBounds="True" >
                 <Ellipse Height="{Binding Circle.Diameter}"  Width="{Binding Circle.Diameter}" 
-                         Canvas.Left="{Binding Circle.Position.X}" Canvas.Bottom="{Binding Circle.Position.Y}"
+                         Canvas.Left="{Binding Circle.CanvasPosition.X}" Canvas.Top="{Binding Circle.CanvasPosition.Y}"
                          StrokeThickness="1" Stroke="Black"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Bottom="{Binding Red.CanvasPosition.Y}" 
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Top="{Binding Red.CanvasPosition.Y}" 
                          Fill="Red"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Bottom="{Binding Green.CanvasPosition.Y}" 
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Top="{Binding Green.CanvasPosition.Y}" 
                          Fill="Green"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Bottom="{Binding Blue.CanvasPosition.Y}"
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Top="{Binding Blue.CanvasPosition.Y}"
                          Fill="Blue"/>
 
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding CircleCenter.CanvasPosition.X}" Canvas.Bottom="{Binding CircleCenter.CanvasPosition.Y}"
+                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Circle.CanvasPosition.X}" Canvas.Top="{Binding Circle.CanvasPosition.Y}"
                          Fill="Brown"/>
             </local:InterativeCanvas>
         </Grid>

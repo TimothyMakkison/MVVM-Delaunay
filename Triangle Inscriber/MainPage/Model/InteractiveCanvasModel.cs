@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Triangle_Inscriber.Helpers.Helper_Classes;
+using System.Windows.Input;
 
 namespace Triangle_Inscriber.MainPage
 {
-    public class InteractiveCanvasModel
+    public static class InteractiveCanvasModel
     {
-        public InteractiveCanvasModel(MainPageViewModel viewModel) => ViewModel = viewModel;
-
-        public MainPageViewModel ViewModel { get; set; }
-
-        public List<Circle> UpdateCanvasItems(FloatingPoint point)
+        public static List<Circle> UpdateCanvasItems(FloatingPoint point, List<Circle> circles)
         {
             //Find closest circle.
             double closest = double.MaxValue;
-            List<Circle> circles = ViewModel.Dots;
 
             int best = 0;
             for(int i=0; i<circles.Count; i++)
@@ -29,16 +27,26 @@ namespace Triangle_Inscriber.MainPage
                     best = i;
                 }
             }
-
-            circles[best].CanvasPosition = point;
+            circles[best].Position = point;
             return circles;
         }
 
-        public void OnUserClick(FloatingPoint point)
+        #region Vertices
+        public static Circle Red { get; set; } = new Circle(100, 300, 10);
+        public static Circle Green { get; set; } = new Circle(300, 100, 10);
+        public static Circle Blue { get; set; } = new Circle(300, 300, 10);
+
+        public static List<Circle> Dots { get; set; } = new List<Circle>() { Red, Green, Blue };
+        #endregion
+
+        #region CircleProperties
+        public static Circle Circle { get; set; } = TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
+        #endregion
+
+        public static void OnUserClick(FloatingPoint point)
         {
-            UpdateCanvasItems(point);
-            List<Circle> circles = ViewModel.Dots;
-            ViewModel.Circle = TriangleInscriber.Inscribe(circles[0].Position, circles[1].Position, circles[2].Position);
+            UpdateCanvasItems(point,Dots);
+            TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
         }
     }
 }
