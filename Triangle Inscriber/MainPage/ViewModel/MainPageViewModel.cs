@@ -18,17 +18,16 @@ namespace Triangle_Inscriber.MainPage
         #region Properties
         public string Name => "Main Page";
 
-        #region CircleProperties
-        public Circle Circle { get; set; } = InteractiveCanvasModel.Circle;
-        #endregion
-
+      
         #region Vertices
         public Circle Red => InteractiveCanvasModel.Red;
         public Circle Green => InteractiveCanvasModel.Green;
         public Circle Blue => InteractiveCanvasModel.Blue;
         #endregion
 
-        public List<Circle> Dots => InteractiveCanvasModel.Dots;
+        #region CircleProperties
+        public Circle Circle { get; set; } = InteractiveCanvasModel.Circle;
+        #endregion
 
         #endregion
     }

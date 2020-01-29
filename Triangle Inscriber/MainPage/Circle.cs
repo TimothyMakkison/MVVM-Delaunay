@@ -29,10 +29,8 @@ namespace Triangle_Inscriber.MainPage
             set
             {
                 position = value;
-                change = true;
-
                 OnPropertyChanged();
-                OnPropertyChanged("CanvasPosition");
+                UpdateCanvas();
             }
         }
 
@@ -61,12 +59,18 @@ namespace Triangle_Inscriber.MainPage
             {
                 diameter = value;
                 radius = diameter / 2;
-                change = true;
                 OnPropertyChanged();
-                OnPropertyChanged("CanvasPosition");
+                UpdateCanvas();
             }
         }
-
+        /// <summary>
+        /// Updates CanvasPosition and indicates that it needs to be recalculated.
+        /// </summary>
+        private void UpdateCanvas()
+        {
+            change = true;
+            OnPropertyChanged("CanvasPosition");
+        }
         #region Override
         public override string ToString() => $"Position: {Position}, Diameter: {Diameter}";
         #endregion

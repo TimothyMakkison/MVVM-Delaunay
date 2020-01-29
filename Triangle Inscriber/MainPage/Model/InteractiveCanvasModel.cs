@@ -11,13 +11,13 @@ namespace Triangle_Inscriber.MainPage
 {
     public static class InteractiveCanvasModel
     {
-        public static List<Circle> UpdateCanvasItems(FloatingPoint point, List<Circle> circles)
+        public static Circle[] UpdateCanvasItems(FloatingPoint point, Circle[] circles)
         {
             //Find closest circle.
             double closest = double.MaxValue;
             int best = 0;
 
-            for(int i=0; i<circles.Count; i++)
+            for(int i=0; i<circles.Length; i++)
             {
                 var truePosition = circles[i].Position;
                 var distance = Math.Abs(point.X - truePosition.X) + Math.Abs(point.Y - truePosition.Y);
@@ -36,21 +36,21 @@ namespace Triangle_Inscriber.MainPage
         public static Circle Green { get; set; } = new Circle(300, 100, 10);
         public static Circle Blue { get; set; } = new Circle(300, 300, 10);
 
-        public static List<Circle> Dots { get; set; } = new List<Circle>() { Red, Green, Blue };
+        public static Circle[] Dots { get; set; } = new Circle[3] { Red, Green, Blue };
         #endregion
 
         #region CircleProperties
-        public static Circle Circle { get; set; } = new Circle(new FloatingPoint(0, 0), 0);
+        public static Circle Circle { get; set; } = TriangleInscriber.Inscribe(new Circle(0, 0, 0),Red.Position,Green.Position,Blue.Position);
         #endregion
 
         public static void OnLeftClick(FloatingPoint point)
         {
             UpdateCanvasItems(point,Dots);
-            TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
+            TriangleInscriber.Inscribe(Circle, Red.Position, Green.Position, Blue.Position);
         }
         public static void OnRightClick(FloatingPoint offset)
         {
-            for(int i =0; i< Dots.Count; i++)
+            for(int i =0; i< Dots.Length; i++)
             {
                 Dots[i].Position -= offset;
             }
