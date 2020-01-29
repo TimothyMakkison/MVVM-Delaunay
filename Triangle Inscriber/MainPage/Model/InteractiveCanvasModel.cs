@@ -1,60 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Triangle_Inscriber.Helpers.Helper_Classes;
-using System.Windows.Input;
+using System.Diagnostics.Contracts;
 
-namespace Triangle_Inscriber.MainPage
+namespace TriangleInscriber.MainPage
 {
     public static class InteractiveCanvasModel
     {
-        public static Circle[] UpdateCanvasItems(FloatingPoint point, Circle[] circles)
+        #region Properties
+
+        #region Dots
+        public static Circle Red { get; set; } = new Circle(200, 100, 10);
+        public static Circle Green { get; set; } = new Circle(100, 241, 10);
+        public static Circle Blue { get; set; } = new Circle(500, 240, 10);
+
+
+
+        private static readonly Circle[] Dots = new Circle[3] { Red, Green, Blue };
+        #endregion
+
+        #region Inscribing Circle
+        public static Circle InscribingCircle { get; set; } = Inscriber.InscribeTriangle(new Circle(0, 0, 0), Red.Position, Green.Position, Blue.Position);
+        #endregion
+
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Sets circle position and updates inscribing circle.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="circle"></param>
+        public static void MoveCanvasDot(FloatingPoint point, Circle circle)
+        {
+            if (circle == null)
+            {
+                throw new ArgumentNullException("Cannot move canvas object as circle is null");
+            }
+            circle.Position = point;
+            Inscriber.InscribeTriangle(InscribingCircle, Red.Position, Green.Position, Blue.Position);
+        }
+
+        /// <summary>
+        /// Transform canvas items by a vector.
+        /// </summary>
+        /// <param name="offset">Transformation vector.</param>
+        public static void TransformCanvasItems(FloatingPoint offset)
+        {
+            for (int i = 0; i < Dots.Length; i++)
+            {
+                Dots[i].Position -= offset;
+            }
+            InscribingCircle.Position -= offset;
+        }
+
+        /// <summary>
+        /// Moves closest dot to point.
+        /// </summary>
+        /// <param name="point">Position closest dot will be moved to.</param>
+        /// <param name="Dots">Collection of dots.</param>
+        /// <returns>Closest item.</returns>
+        public static Circle FindClosestItem(FloatingPoint point)
         {
             //Find closest circle.
             double closest = double.MaxValue;
             int best = 0;
 
-            for(int i=0; i<circles.Length; i++)
+            for (int i = 0; i < Dots.Length; i++)
             {
-                var truePosition = circles[i].Position;
-                var distance = Math.Abs(point.X - truePosition.X) + Math.Abs(point.Y - truePosition.Y);
+                FloatingPoint truePosition = Dots[i].Position;
+                double distance = Math.Abs(point.X - truePosition.X) + Math.Abs(point.Y - truePosition.Y);
                 if (distance < closest)
                 {
                     closest = distance;
                     best = i;
                 }
             }
-            circles[best].Position = point;
-            return circles;
+            return Dots[best];
         }
-
-        #region Vertices
-        public static Circle Red { get; set; } = new Circle(100, 300, 10);
-        public static Circle Green { get; set; } = new Circle(300, 100, 10);
-        public static Circle Blue { get; set; } = new Circle(300, 300, 10);
-
-        public static Circle[] Dots { get; set; } = new Circle[3] { Red, Green, Blue };
         #endregion
-
-        #region CircleProperties
-        public static Circle Circle { get; set; } = TriangleInscriber.Inscribe(new Circle(0, 0, 0),Red.Position,Green.Position,Blue.Position);
-        #endregion
-
-        public static void OnLeftClick(FloatingPoint point)
-        {
-            UpdateCanvasItems(point,Dots);
-            TriangleInscriber.Inscribe(Circle, Red.Position, Green.Position, Blue.Position);
-        }
-        public static void OnRightClick(FloatingPoint offset)
-        {
-            for(int i =0; i< Dots.Length; i++)
-            {
-                Dots[i].Position -= offset;
-            }
-            TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
-        }
     }
 }

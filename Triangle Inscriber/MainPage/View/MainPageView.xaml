@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Triangle_Inscriber.MainPage.MainPageView"
+﻿<UserControl x:Class="TriangleInscriber.MainPage.MainPageView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:local="clr-namespace:Triangle_Inscriber.MainPage"
+             xmlns:local="clr-namespace:TriangleInscriber.MainPage"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              >
@@ -18,18 +18,18 @@
 
         <Grid Grid.Row="1">
             <local:InterativeCanvas Background="AliceBlue" ClipToBounds="True" >
-                <Ellipse Height="{Binding Circle.Diameter}"  Width="{Binding Circle.Diameter}" 
-                         Canvas.Left="{Binding Circle.CanvasPosition.X}" Canvas.Top="{Binding Circle.CanvasPosition.Y}"
+                <Ellipse Height="{Binding InscribingCircle.Diameter}"  Width="{Binding InscribingCircle.Diameter}" 
+                         Canvas.Left="{Binding InscribingCircle.CanvasPosition.X}" Canvas.Top="{Binding InscribingCircle.CanvasPosition.Y}"
                          StrokeThickness="1" Stroke="Black"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Top="{Binding Red.CanvasPosition.Y}" 
+                <Ellipse Height="{Binding Red.Diameter}" Width="{Binding Red.Diameter}" 
+                         Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Top="{Binding Red.CanvasPosition.Y}" 
                          Fill="Red"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Top="{Binding Green.CanvasPosition.Y}" 
+                <Ellipse Height="{Binding Green.Diameter}" Width="{Binding Green.Diameter}" 
+                         Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Top="{Binding Green.CanvasPosition.Y}" 
                          Fill="Green"/>
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Top="{Binding Blue.CanvasPosition.Y}"
+                <Ellipse Height="{Binding Blue.Diameter}" Width="{Binding Blue.Diameter}" 
+                         Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Top="{Binding Blue.CanvasPosition.Y}"
                          Fill="Blue"/>
-
-                <Ellipse Height="10" Width="10" Canvas.Left="{Binding Circle.CanvasPosition.X}" Canvas.Top="{Binding Circle.CanvasPosition.Y}"
-                         Fill="Brown"/>
             </local:InterativeCanvas>
         </Grid>
     </Grid>

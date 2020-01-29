@@ -78,11 +78,11 @@
     <Compile Include="Helpers\Helper Classes\IPageViewModel.cs" />
     <Compile Include="Helpers\Helper Classes\ObservableObject.cs" />
     <Compile Include="Helpers\Helper Classes\RelayCommand.cs" />
-    <Compile Include="MainPage\Circle.cs" />
-    <Compile Include="MainPage\FloatingPoint.cs" />
+    <Compile Include="MainPage\Misc Classes\Circle.cs" />
+    <Compile Include="MainPage\Misc Classes\FloatingPoint.cs" />
     <Compile Include="MainPage\Model\InteractiveCanvasModel.cs" />
-    <Compile Include="MainPage\InterativeCanvas.cs" />
-    <Compile Include="MainPage\Model\TriangleInscriber.cs" />
+    <Compile Include="MainPage\Misc Classes\InterativeCanvas.cs" />
+    <Compile Include="MainPage\Model\Inscriber.cs" />
     <Compile Include="MainPage\View\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>

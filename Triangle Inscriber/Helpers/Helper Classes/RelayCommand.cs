@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Triangle_Inscriber.Helpers.Helper_Classes
+namespace TriangleInscriber.Helpers.HelperClasses
 {
     /// <summary>
     /// A command whose sole purpose is to 

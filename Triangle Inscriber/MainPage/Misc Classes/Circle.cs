@@ -1,8 +1,10 @@
-﻿using Triangle_Inscriber.Helpers.Helper_Classes;
-using System.Windows;
+﻿using TriangleInscriber.Helpers.HelperClasses;
 
-namespace Triangle_Inscriber.MainPage
+namespace TriangleInscriber.MainPage
 {
+    /// <summary>
+    /// Contains position data, canvas position data and diameter of circle.
+    /// </summary>
     public class Circle : ObservableObject
     {
         #region Fields
@@ -25,7 +27,7 @@ namespace Triangle_Inscriber.MainPage
         #region Properties
         public FloatingPoint Position
         {
-            get => position; 
+            get => position;
             set
             {
                 position = value;
@@ -33,7 +35,9 @@ namespace Triangle_Inscriber.MainPage
                 UpdateCanvas();
             }
         }
-
+        /// <summary>
+        /// Position used to place on canvas, offset based off radius so the center appears where its position is.
+        /// </summary>
         public FloatingPoint CanvasPosition
         {
             get
@@ -52,6 +56,9 @@ namespace Triangle_Inscriber.MainPage
             }
         }
 
+        /// <summary>
+        /// Diameter of circle.
+        /// </summary>
         public double Diameter
         {
             get => diameter;
@@ -69,10 +76,14 @@ namespace Triangle_Inscriber.MainPage
         private void UpdateCanvas()
         {
             change = true;
-            OnPropertyChanged("CanvasPosition");
+            OnPropertyChanged(nameof(CanvasPosition));
         }
+
         #region Override
-        public override string ToString() => $"Position: {Position}, Diameter: {Diameter}";
+        public override string ToString()
+        {
+            return $"Position: {Position}, Diameter: {Diameter}";
+        }
         #endregion
 
         #endregion

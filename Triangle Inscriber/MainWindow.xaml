@@ -1,13 +1,13 @@
-﻿<Window x:Class="Triangle_Inscriber.MainWindow"
+﻿<Window x:Class="TriangleInscriber.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
-        xmlns:local="clr-namespace:Triangle_Inscriber"
-        xmlns:ViewModel="clr-namespace:Triangle_Inscriber.MainWindowViewModel"
-        xmlns:MainPage="clr-namespace:Triangle_Inscriber.MainPage"
+        xmlns:local="clr-namespace:TriangleInscriber"
+        xmlns:ViewModel="clr-namespace:TriangleInscriber.MainWindowViewModel"
+        xmlns:MainPage="clr-namespace:TriangleInscriber.MainPage"
         
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"

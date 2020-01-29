@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Triangle_Inscriber.Helpers.Helper_Classes
+namespace TriangleInscriber.Helpers.HelperClasses
 {
     public abstract class ObservableObject : INotifyPropertyChanged
     {

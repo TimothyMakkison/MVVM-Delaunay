@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Triangle_Inscriber.Properties
+namespace TriangleInscriber.Properties
 {
 
 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Triangle_Inscriber.Helpers.Helper_Classes;
+using TriangleInscriber.Helpers.HelperClasses;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Triangle_Inscriber.MainWindowViewModel
+namespace TriangleInscriber.MainWindowViewModel
 {
     class MainWindowViewModel : ObservableObject
     {

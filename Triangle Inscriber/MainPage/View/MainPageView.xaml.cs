@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Triangle_Inscriber.MainPage
+namespace TriangleInscriber.MainPage
 {
     /// <summary>
     /// Interaction logic for MainPageView.xaml
