@@ -52,7 +52,7 @@ namespace TriangleInscriber.MainPage
             }
             else
             {
-                //Caclulate centre positions
+                //Caclulate center position
                 cx = mx1 + n;
                 cy = my1 + n * g1;
             }

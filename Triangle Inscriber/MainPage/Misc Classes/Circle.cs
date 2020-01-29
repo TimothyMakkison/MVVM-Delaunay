@@ -80,10 +80,7 @@ namespace TriangleInscriber.MainPage
         }
 
         #region Override
-        public override string ToString()
-        {
-            return $"Position: {Position}, Diameter: {Diameter}";
-        }
+        public override string ToString() => $"Position: {Position}, Diameter: {Diameter}";
         #endregion
 
         #endregion

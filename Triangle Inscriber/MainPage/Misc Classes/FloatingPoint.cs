@@ -2,6 +2,9 @@
 
 namespace TriangleInscriber.MainPage
 {
+    /// <summary>
+    /// Two dimensional flaoting point position, has basic mathematical operators and converters.
+    /// </summary>
     public class FloatingPoint : ObservableObject
     {
         #region Fields

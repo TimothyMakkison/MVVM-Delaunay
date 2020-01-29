@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace TriangleInscriber.MainPage
 {
+    /// <summary>
+    /// Interactive canvas deriving from Canvas that detects and executes commands relative to mouse activity.
+    /// </summary>
     public class InterativeCanvas : Canvas
     {
         #region Fields
@@ -60,7 +63,7 @@ namespace TriangleInscriber.MainPage
         }
         #endregion
 
-        #region MouseMovement
+        #region Mouse Movement
         /// <summary>
         /// Performs actions depending on button states.
         /// </summary>

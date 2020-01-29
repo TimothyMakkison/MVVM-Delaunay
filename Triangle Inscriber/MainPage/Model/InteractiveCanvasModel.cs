@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 
 namespace TriangleInscriber.MainPage
 {
@@ -12,9 +11,7 @@ namespace TriangleInscriber.MainPage
         public static Circle Green { get; set; } = new Circle(100, 241, 10);
         public static Circle Blue { get; set; } = new Circle(500, 240, 10);
 
-
-
-        private static readonly Circle[] Dots = new Circle[3] { Red, Green, Blue };
+        private static readonly Circle[] dots = new Circle[3] { Red, Green, Blue };
         #endregion
 
         #region Inscribing Circle
@@ -45,9 +42,9 @@ namespace TriangleInscriber.MainPage
         /// <param name="offset">Transformation vector.</param>
         public static void TransformCanvasItems(FloatingPoint offset)
         {
-            for (int i = 0; i < Dots.Length; i++)
+            for (int i = 0; i < dots.Length; i++)
             {
-                Dots[i].Position -= offset;
+                dots[i].Position -= offset;
             }
             InscribingCircle.Position -= offset;
         }
@@ -64,9 +61,9 @@ namespace TriangleInscriber.MainPage
             double closest = double.MaxValue;
             int best = 0;
 
-            for (int i = 0; i < Dots.Length; i++)
+            for (int i = 0; i < dots.Length; i++)
             {
-                FloatingPoint truePosition = Dots[i].Position;
+                FloatingPoint truePosition = dots[i].Position;
                 double distance = Math.Abs(point.X - truePosition.X) + Math.Abs(point.Y - truePosition.Y);
                 if (distance < closest)
                 {
@@ -74,7 +71,7 @@ namespace TriangleInscriber.MainPage
                     best = i;
                 }
             }
-            return Dots[best];
+            return dots[best];
         }
         #endregion
     }
