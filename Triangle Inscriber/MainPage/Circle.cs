@@ -8,6 +8,9 @@ namespace Triangle_Inscriber.MainPage
         #region Fields
         private double diameter;
         private FloatingPoint position;
+        private FloatingPoint canvasPosition;
+        private double radius;
+        private bool change = true;
         #endregion
 
         #region Constructor
@@ -26,13 +29,30 @@ namespace Triangle_Inscriber.MainPage
             set
             {
                 position = value;
+                change = true;
+
                 OnPropertyChanged();
                 OnPropertyChanged("CanvasPosition");
-
             }
         }
 
-        public FloatingPoint CanvasPosition => Position - Diameter / 2;
+        public FloatingPoint CanvasPosition
+        {
+            get
+            {
+                if (change)
+                {
+                    canvasPosition = Position - radius;
+                    change = false;
+                }
+                return canvasPosition;
+            }
+            private set
+            {
+                canvasPosition = value;
+                OnPropertyChanged();
+            }
+        }
 
         public double Diameter
         {
@@ -40,12 +60,15 @@ namespace Triangle_Inscriber.MainPage
             set
             {
                 diameter = value;
+                radius = diameter / 2;
+                change = true;
                 OnPropertyChanged();
+                OnPropertyChanged("CanvasPosition");
             }
         }
 
         #region Override
-        public override string ToString() => $"{Position}, {Diameter}";
+        public override string ToString() => $"Position: {Position}, Diameter: {Diameter}";
         #endregion
 
         #endregion

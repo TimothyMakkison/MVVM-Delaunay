@@ -35,5 +35,11 @@ public class FloatingPoint : ObservableObject
 
     public static FloatingPoint operator +(FloatingPoint point, double value) => new FloatingPoint(point.X + value, point.Y + value);
 
+    public static FloatingPoint operator +(FloatingPoint a, FloatingPoint b) => new FloatingPoint(a.X + b.X, a.Y + b.Y);
+
+    public static FloatingPoint operator -(FloatingPoint a, FloatingPoint b) => new FloatingPoint(a.X - b.X, a.Y - b.Y);
+
+    public static FloatingPoint operator ^(FloatingPoint a, FloatingPoint b) => new FloatingPoint(a.X - b.X, a.Y - b.Y);
+
     public static implicit operator FloatingPoint(System.Windows.Point point) => new FloatingPoint(point.X, point.Y);
 }

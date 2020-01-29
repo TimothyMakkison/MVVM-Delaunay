@@ -15,12 +15,12 @@ namespace Triangle_Inscriber.MainPage
         {
             //Find closest circle.
             double closest = double.MaxValue;
-
             int best = 0;
+
             for(int i=0; i<circles.Count; i++)
             {
-                var t = circles[i].CanvasPosition;
-                var distance = Math.Abs(point.X - t.X) + Math.Abs(point.Y - t.Y);
+                var truePosition = circles[i].Position;
+                var distance = Math.Abs(point.X - truePosition.X) + Math.Abs(point.Y - truePosition.Y);
                 if (distance < closest)
                 {
                     closest = distance;
@@ -40,12 +40,20 @@ namespace Triangle_Inscriber.MainPage
         #endregion
 
         #region CircleProperties
-        public static Circle Circle { get; set; } = TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
+        public static Circle Circle { get; set; } = new Circle(new FloatingPoint(0, 0), 0);
         #endregion
 
-        public static void OnUserClick(FloatingPoint point)
+        public static void OnLeftClick(FloatingPoint point)
         {
             UpdateCanvasItems(point,Dots);
+            TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
+        }
+        public static void OnRightClick(FloatingPoint offset)
+        {
+            for(int i =0; i< Dots.Count; i++)
+            {
+                Dots[i].Position -= offset;
+            }
             TriangleInscriber.Inscribe(Circle, Dots[0].Position, Dots[1].Position, Dots[2].Position);
         }
     }
