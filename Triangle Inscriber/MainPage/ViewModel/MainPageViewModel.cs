@@ -10,6 +10,7 @@ using TriangleInscriber.Helpers.HelperClasses;
 using ColorMine.ColorSpaces;
 using TriangleInscriber.MainPage;
 using System.Windows.Media;
+using Triangle_Inscriber.Extensions;
 
 namespace TriangleInscriber.MainPage
 {
@@ -53,9 +54,7 @@ namespace TriangleInscriber.MainPage
                 var i = p.Index;
 
                 var hsl = new Hsl() { H = 360 * x / width, S = 80, L = 60 };
-                var a = hsl.ToRgb();
-                var col = new System.Windows.Media.Color() { R = (byte)a.R, G = (byte)a.G, B = (byte)a.B, A = 255 };
-                return new SolidColorBrush(col);
+                return hsl.ToColor().ToBrush();
             };
 
             UpdatePolygons();
