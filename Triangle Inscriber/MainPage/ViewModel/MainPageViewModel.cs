@@ -1,22 +1,74 @@
-﻿using TriangleInscriber.Helpers.HelperClasses;
+﻿using DelaunatorSharp;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Drawing;
+using System.Linq;
+using System.Windows;
+using System.Windows.Shapes;
+using TriangleInscriber.Helpers.HelperClasses;
+using ColorMine.ColorSpaces;
+using TriangleInscriber.MainPage;
+using System.Windows.Media;
 
 namespace TriangleInscriber.MainPage
 {
     public class MainPageViewModel : ObservableObject, IPageViewModel
     {
-        #region Properties
+        private IEnumerable<Poly> polygons;
         public string Name => "Main Page";
 
-        #region Vertices
-        public static Circle Red => InteractiveCanvasModel.Red;
-        public static Circle Green => InteractiveCanvasModel.Green;
-        public static Circle Blue => InteractiveCanvasModel.Blue;
-        #endregion
+        public IEnumerable<Poly> Polygons
+        {
+            get => polygons;
+            set
+            {
+                polygons = value;
+                OnPropertyChanged();
+            }
+        }
 
-        #region CircleProperties
-        public Circle InscribingCircle { get; set; } = InteractiveCanvasModel.InscribingCircle;
-        #endregion
+        public List<IPoint> Points { get; set; }
+        private Func<Poly,SolidColorBrush> ColorFunction { get; set; }
 
-        #endregion
+        public MainPageViewModel()
+        {
+            Random r = new Random();
+
+            double width = 1500;
+            double height = 800;
+
+            IPoint randPoint()
+            {
+                return new DelaunatorSharp.Point(r.NextDouble() * width, r.NextDouble() * height);
+            }
+
+            Points = Enumerable.Range(0, 100).Select(x => randPoint()).ToList();
+
+            ColorFunction = p =>
+            {
+                var x = p.Points.Min(po=> po.X);
+                var y = p.Points.Min(po => po.Y);
+
+                var i = p.Index;
+
+                var hsl = new Hsl() { H = 360 * x / width, S = 80, L = 60 };
+                var a = hsl.ToRgb();
+                var col = new System.Windows.Media.Color() { R = (byte)a.R, G = (byte)a.G, B = (byte)a.B, A = 255 };
+                return new SolidColorBrush(col);
+            };
+
+            UpdatePolygons();
+        }
+        public void UpdatePolygons()
+        {
+            var polies = DelauneyHandler.GetVoroni(Points);
+            Polygons = polies.Select(p => new Poly
+            {
+                Points = p.Points,
+                Index = p.Index,
+                Brush = ColorFunction(p) 
+            });
+        }
     }
 }

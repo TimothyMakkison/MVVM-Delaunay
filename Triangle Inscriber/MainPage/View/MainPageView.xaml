@@ -17,20 +17,19 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1">
-            <local:InterativeCanvas Background="AliceBlue" ClipToBounds="True" >
-                <Ellipse Height="{Binding InscribingCircle.Diameter}"  Width="{Binding InscribingCircle.Diameter}" 
-                         Canvas.Left="{Binding InscribingCircle.CanvasPosition.X}" Canvas.Top="{Binding InscribingCircle.CanvasPosition.Y}"
-                         StrokeThickness="1" Stroke="Black"/>
-                <Ellipse Height="{Binding Red.Diameter}" Width="{Binding Red.Diameter}" 
-                         Canvas.Left="{Binding Red.CanvasPosition.X}" Canvas.Top="{Binding Red.CanvasPosition.Y}" 
-                         Fill="Red"/>
-                <Ellipse Height="{Binding Green.Diameter}" Width="{Binding Green.Diameter}" 
-                         Canvas.Left="{Binding Green.CanvasPosition.X}" Canvas.Top="{Binding Green.CanvasPosition.Y}" 
-                         Fill="Green"/>
-                <Ellipse Height="{Binding Blue.Diameter}" Width="{Binding Blue.Diameter}" 
-                         Canvas.Left="{Binding Blue.CanvasPosition.X}" Canvas.Top="{Binding Blue.CanvasPosition.Y}"
-                         Fill="Blue"/>
-            </local:InterativeCanvas>
+            <ItemsControl ItemsSource="{Binding Polygons}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas MouseLeftButtonUp="Canvas_MouseLeftButtonUp"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Polygon Points="{Binding Points}" Fill="{Binding Brush}" Stroke="White">
+                        </Polygon>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
     </Grid>
 </UserControl>
