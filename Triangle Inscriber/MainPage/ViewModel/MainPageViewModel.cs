@@ -1,16 +1,11 @@
-﻿using DelaunatorSharp;
+﻿using ColorMine.ColorSpaces;
+using DelaunatorSharp;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Linq;
-using System.Windows;
-using System.Windows.Shapes;
-using TriangleInscriber.Helpers.HelperClasses;
-using ColorMine.ColorSpaces;
-using TriangleInscriber.MainPage;
 using System.Windows.Media;
 using Triangle_Inscriber.Extensions;
+using TriangleInscriber.Helpers.HelperClasses;
 
 namespace TriangleInscriber.MainPage
 {
@@ -30,7 +25,7 @@ namespace TriangleInscriber.MainPage
         }
 
         public List<IPoint> Points { get; set; }
-        private Func<Poly,SolidColorBrush> ColorFunction { get; set; }
+        private Func<Poly, SolidColorBrush> ColorFunction { get; set; }
 
         public MainPageViewModel()
         {
@@ -48,7 +43,7 @@ namespace TriangleInscriber.MainPage
 
             ColorFunction = p =>
             {
-                var x = p.Points.Min(po=> po.X);
+                var x = p.Points.Min(po => po.X);
                 var y = p.Points.Min(po => po.Y);
 
                 var i = p.Index;
@@ -59,6 +54,7 @@ namespace TriangleInscriber.MainPage
 
             UpdatePolygons();
         }
+
         public void UpdatePolygons()
         {
             var polies = DelauneyHandler.GetVoroni(Points);
@@ -66,7 +62,7 @@ namespace TriangleInscriber.MainPage
             {
                 Points = p.Points,
                 Index = p.Index,
-                Brush = ColorFunction(p) 
+                Brush = ColorFunction(p)
             });
         }
     }

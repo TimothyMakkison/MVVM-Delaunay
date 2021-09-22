@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TriangleInscriber.Helpers.HelperClasses;
-using System.Windows;
-using System.Windows.Input;
+﻿using TriangleInscriber.Helpers.HelperClasses;
 
 namespace TriangleInscriber.MainWindowViewModel
 {
-    class MainWindowViewModel : ObservableObject
+    internal class MainWindowViewModel : ObservableObject
     {
         private IPageViewModel _currentPageViewModel = new MainPage.MainPageViewModel();
+
         /// <summary>
         /// Updates or returns current page
         /// </summary>
@@ -27,7 +21,6 @@ namespace TriangleInscriber.MainWindowViewModel
                 {
                     _currentPageViewModel = value;
                     OnPropertyChanged();
-
                 }
             }
         }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ColorMine.ColorSpaces;
+﻿using ColorMine.ColorSpaces;
 using System.Windows.Media;
 
 namespace Triangle_Inscriber.Extensions
@@ -15,6 +10,7 @@ namespace Triangle_Inscriber.Extensions
             var rgb = colorSpace.ToRgb();
             return Color.FromArgb(255, (byte)rgb.R, (byte)rgb.G, (byte)rgb.B);
         }
+
         public static SolidColorBrush ToBrush(this Color color)
         {
             return new SolidColorBrush(color);
